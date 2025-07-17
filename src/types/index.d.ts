@@ -22,7 +22,7 @@ interface FileSystemDirectoryHandle extends FileSystemHandle {
 interface FileSystemHandle {
     kind: "file" | "directory"
     name: string
-}
+} 
 
 interface GetFileHandleOptions {
     create?: boolean

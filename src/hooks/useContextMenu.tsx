@@ -48,7 +48,6 @@ export const useContextMenu = ({
 
         return () => {
             itemRef.removeEventListener("contextmenu", handleItemContextMenu)
-
             document.removeEventListener("click", closeMenu)
             document.removeEventListener("contextmenu", handleRightClick)
         }
