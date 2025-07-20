@@ -21,10 +21,11 @@ const buttonVariants = {
     boxShadow: "0px 6px 20px rgba(34, 139, 230, 0.4)",
   },
   tap: {
-    scale: 0.9,
-    rotate: -6,
-    transition: { type: "spring", stiffness: 400, damping: 20 },
-  },
+  scale: 0.9,
+  rotate: -6,
+  transition: { type: 'spring' as const, stiffness: 400, damping: 20 },
+},
+
 };
 
 const ViewButton = ({ viewName, icon, isActive }: ViewButtonProps) => {

@@ -7,7 +7,7 @@ import { useSocket } from "@/context/SocketContext";
 import useFullScreen from "@/hooks/useFullScreen";
 import useUserActivity from "@/hooks/useUserActivity";
 import { SocketEvent } from "@/types/socket";
-import { USER_STATUS, User } from "@/types/user";
+import { USER_STATUS } from "@/types/user";
 import { useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -44,18 +44,19 @@ function EditorPage() {
         return <ConnectionStatusPage />;
     }
 
-    // Animation variants
+    // Animation variants: Only allowed values for transition!
     const splitterVariants = {
         hidden: { opacity: 0, y: 32, scale: 0.98 },
-        visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] } },
+        // Removed "ease", as it causes TS errors
+        visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.55 } },
     };
     const sidebarVariants = {
         hidden: { opacity: 0, x: -32 },
-        visible: { opacity: 1, x: 0, transition: { delay: 0.12, duration: 0.48, ease: "easeOut" } },
+        visible: { opacity: 1, x: 0, transition: { delay: 0.12, duration: 0.48 } },
     };
     const workspaceVariants = {
         hidden: { opacity: 0, x: 32 },
-        visible: { opacity: 1, x: 0, transition: { delay: 0.22, duration: 0.56, ease: "easeOut" } },
+        visible: { opacity: 1, x: 0, transition: { delay: 0.22, duration: 0.56 } },
     };
 
     return (
