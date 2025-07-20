@@ -18,8 +18,8 @@ const errorBoxVariants: Variants = {
         y: 0,
         transition: {
             duration: 0.65,
-            // @ts-ignore
-            ease: [0.16, 1, 0.3, 1]
+            
+            ease: "easeInOut"
         }
     },
 };

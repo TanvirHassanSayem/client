@@ -20,8 +20,8 @@ const variants: Variants = {
     scale: 1,
     transition: {
       duration: 0.5,
-      // @ts-ignore
-      ease: [0.16, 1, 0.3, 1], // Cubic bezier is valid for Framer Motion, but not typed. See note below!
+     
+      ease: "easeInOut" , // Cubic bezier is valid for Framer Motion, but not typed. See note below!
     },
   },
   exit: (direction: Direction) => ({
@@ -30,8 +30,8 @@ const variants: Variants = {
     scale: 0.96,
     transition: {
       duration: 0.4,
-      // @ts-ignore
-      ease: [0.7, 0.2, 0.3, 0.9], // Cubic bezier is valid for Framer Motion, but not typed. See note below!
+      
+      ease: "easeInOut", // Cubic bezier is valid for Framer Motion, but not typed. See note below!
     },
   }),
 };

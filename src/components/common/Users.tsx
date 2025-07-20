@@ -26,8 +26,8 @@ const userVariants: Variants = {
     ],
     transition: {
       duration: 0.55,
-      // @ts-ignore
-      ease: [0.24, 1, 0.32, 1],
+    
+      ease: "easeInOut" ,
       background: { duration: 1.5, ease: "linear" },
       type: "spring",
       stiffness: 440,
@@ -40,8 +40,7 @@ const userVariants: Variants = {
     scale: 0.85,
     transition: {
       duration: 0.22,
-      // @ts-ignore
-      ease: [0.32, 0, 0.67, 0],
+      ease: "easeInOut",
     },
   },
 };
@@ -159,6 +158,7 @@ const User = ({ user }: { user: RemoteUser }) => {
         />
       )}
     </motion.div>
+
   );
 };
 

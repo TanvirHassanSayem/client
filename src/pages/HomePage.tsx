@@ -18,7 +18,7 @@ function HomePage() {
                 </div>
             </div>
             {/* <Footer /> */}
-            <style jsx global>{`
+            <style  >{`
                 @keyframes glowPulse {
                   0%, 100% {
                     filter: drop-shadow(0 0 0px #71c7ec) drop-shadow(0 0 2px #71c7ec);

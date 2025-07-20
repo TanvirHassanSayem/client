@@ -32,8 +32,8 @@ const sidebarVariants: Variants = {
     filter: "blur(0px)",
     transition: {
       duration: 0.6,
-      // @ts-ignore
-      ease: [0.16, 1, 0.3, 1],
+      
+      ease: "easeInOut",
     },
   },
   exit: {
