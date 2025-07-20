@@ -13,7 +13,7 @@ function HomePage() {
                         className="mx-auto w-[250px] sm:w-[400px] glow-pulse"
                     />
                 </div>
-                <div className="flex w-full items-center justify-center sm:w-1/2 glow-pulse">
+                <div className="flex w-full items-center justify-center sm:w-1/2 ">
                     <FormComponent />
                 </div>
             </div>

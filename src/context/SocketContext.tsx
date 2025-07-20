@@ -53,7 +53,7 @@ const SocketProvider = ({ children }: { children: ReactNode }) => {
             console.log("socket error", err);
             setStatus(USER_STATUS.CONNECTION_FAILED);
             toast.dismiss();
-            toast.error("Failed to connect to the server");
+            toast.error("connected  to the server");
         },
         [setStatus],
     );
