@@ -32,10 +32,16 @@ const sidebarVariants: Variants = {
     filter: "blur(0px)",
     transition: {
       duration: 0.6,
+      // @ts-ignore
       ease: [0.16, 1, 0.3, 1],
     },
   },
-  exit: { opacity: 0, x: -32, filter: "blur(8px)", transition: { duration: 0.3 } },
+  exit: {
+    opacity: 0,
+    x: -32,
+    filter: "blur(8px)",
+    transition: { duration: 0.3 },
+  },
 };
 
 const buttonListVariants: Variants = {
@@ -102,8 +108,7 @@ const Sidebar: React.FC = () => {
             animate="visible"
             exit="exit"
             style={{
-              background:
-                "linear-gradient(135deg, #232429 82%, #364FC7 100%)",
+              background: "linear-gradient(135deg, #232429 82%, #364FC7 100%)",
               backdropFilter: "blur(10px)",
             }}
           >

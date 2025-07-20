@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { MdWifiOff } from "react-icons/md";
 
 function ConnectionStatusPage() {
@@ -10,12 +10,21 @@ function ConnectionStatusPage() {
     );
 }
 
-const errorBoxVariants = {
+const errorBoxVariants: Variants = {
     initial: { opacity: 0, scale: 0.93, y: 40 },
-    animate: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] } },
+    animate: {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        transition: {
+            duration: 0.65,
+            // @ts-ignore
+            ease: [0.16, 1, 0.3, 1]
+        }
+    },
 };
 
-const iconVariants = {
+const iconVariants: Variants = {
     initial: { scale: 0.8, rotate: 0 },
     animate: {
         scale: [0.8, 1.2, 1],
@@ -36,7 +45,12 @@ const ConnectionError = () => {
             animate="animate"
             className="flex flex-col items-center gap-4 bg-[#22252e] rounded-2xl shadow-xl p-8"
         >
-            <motion.div variants={iconVariants} initial="initial" animate="animate" className="mb-2">
+            <motion.div
+                variants={iconVariants}
+                initial="initial"
+                animate="animate"
+                className="mb-2"
+            >
                 <MdWifiOff className="text-red-400" size={70} />
             </motion.div>
             <span className="whitespace-break-spaces text-lg font-semibold text-slate-200">
@@ -48,6 +62,7 @@ const ConnectionError = () => {
                     whileTap={{ scale: 0.97 }}
                     className="mr-4 rounded-md bg-primary px-8 py-2 font-bold text-black shadow"
                     onClick={reloadPage}
+                    type="button"
                 >
                     Try Again
                 </motion.button>
@@ -56,6 +71,7 @@ const ConnectionError = () => {
                     whileTap={{ scale: 0.97 }}
                     className="rounded-md bg-primary px-8 py-2 font-bold text-black shadow"
                     onClick={gotoHomePage}
+                    type="button"
                 >
                     Go to HomePage
                 </motion.button>

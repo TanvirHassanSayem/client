@@ -1,10 +1,10 @@
 import { useAppContext } from "@/context/AppContext";
 import { RemoteUser, USER_CONNECTION_STATUS } from "@/types/user";
 import Avatar from "react-avatar";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, Variants } from "framer-motion";
 
 // Parent (grid) stagger
-const containerVariants = {
+const containerVariants: Variants = {
   animate: {
     transition: {
       staggerChildren: 0.09,
@@ -14,7 +14,7 @@ const containerVariants = {
 };
 
 // Each user card
-const userVariants = {
+const userVariants: Variants = {
   initial: { opacity: 0, y: 32, scale: 0.88 },
   animate: {
     opacity: 1,
@@ -26,6 +26,7 @@ const userVariants = {
     ],
     transition: {
       duration: 0.55,
+      // @ts-ignore
       ease: [0.24, 1, 0.32, 1],
       background: { duration: 1.5, ease: "linear" },
       type: "spring",
@@ -37,7 +38,11 @@ const userVariants = {
     opacity: 0,
     y: -22,
     scale: 0.85,
-    transition: { duration: 0.22, ease: [0.32, 0, 0.67, 0] },
+    transition: {
+      duration: 0.22,
+      // @ts-ignore
+      ease: [0.32, 0, 0.67, 0],
+    },
   },
 };
 
@@ -49,7 +54,7 @@ const avatarHover = {
 };
 
 // Online indicator (dot) variants
-const dotVariants = {
+const dotVariants: Variants = {
   online: {
     scale: [1, 1.45, 1.15, 1],
     boxShadow: [
@@ -83,7 +88,7 @@ function Users() {
         layout // enables springy grid reflows
       >
         <AnimatePresence>
-          {users.map((user) => (
+          {(users || []).map((user) => (
             <User key={user.socketId} user={user} />
           ))}
         </AnimatePresence>
@@ -94,9 +99,7 @@ function Users() {
 
 const User = ({ user }: { user: RemoteUser }) => {
   const { username, status } = user;
-  const title = `${username} - ${
-    status === USER_CONNECTION_STATUS.ONLINE ? "online" : "offline"
-  }`;
+  const title = `${username} - ${status === USER_CONNECTION_STATUS.ONLINE ? "online" : "offline"}`;
 
   return (
     <motion.div
@@ -108,11 +111,9 @@ const User = ({ user }: { user: RemoteUser }) => {
       exit="exit"
       whileHover={{
         scale: 1.06,
-        boxShadow:
-          "0 8px 28px 0 rgba(34,139,230,0.19), 0 0px 3px #228be6b0",
+        boxShadow: "0 8px 28px 0 rgba(34,139,230,0.19), 0 0px 3px #228be6b0",
         borderColor: "#228be6",
-        background:
-          "linear-gradient(135deg, #232429 80%, #5C7CFA 100%)",
+        background: "linear-gradient(135deg, #232429 80%, #5C7CFA 100%)",
         transition: { type: "spring", stiffness: 320, damping: 22 },
       }}
       layout
@@ -136,9 +137,7 @@ const User = ({ user }: { user: RemoteUser }) => {
         `}
         variants={dotVariants}
         animate={status === USER_CONNECTION_STATUS.ONLINE ? "online" : "offline"}
-        style={{
-          zIndex: 1,
-        }}
+        style={{ zIndex: 1 }}
       />
       {/* Ripple effect for online */}
       {status === USER_CONNECTION_STATUS.ONLINE && (

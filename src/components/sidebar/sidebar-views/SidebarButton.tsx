@@ -9,6 +9,8 @@ import { motion } from "framer-motion";
 interface ViewButtonProps {
   viewName: VIEWS;
   icon: JSX.Element;
+  isActive: boolean;  // <-- add this prop!
+  index: number;      // <-- optional, if you use it for mapping order
 }
 
 const buttonVariants = {
@@ -25,7 +27,7 @@ const buttonVariants = {
   },
 };
 
-const ViewButton = ({ viewName, icon }: ViewButtonProps) => {
+const ViewButton = ({ viewName, icon, isActive }: ViewButtonProps) => {
   const { activeView, setActiveView, isSidebarOpen, setIsSidebarOpen } = useViews();
   const { isNewMessage } = useChatRoom();
   const [showTooltip, setShowTooltip] = useState(true);
@@ -44,7 +46,10 @@ const ViewButton = ({ viewName, icon }: ViewButtonProps) => {
       <motion.button
         onClick={() => handleViewClick(viewName)}
         onMouseEnter={() => setShowTooltip(true)}
-        className={`${buttonStyles.base} ${buttonStyles.hover} relative z-10`}
+        className={`
+          ${buttonStyles.base} ${buttonStyles.hover} relative z-10
+          ${isActive ? "bg-[#232429] shadow-lg" : ""}
+        `}
         initial="initial"
         animate="animate"
         whileHover="hover"
@@ -55,7 +60,7 @@ const ViewButton = ({ viewName, icon }: ViewButtonProps) => {
           "data-tooltip-content": viewName,
         })}
         type="button"
-        aria-pressed={activeView === viewName}
+        aria-pressed={isActive}
         aria-label={viewName}
       >
         <div className="flex items-center justify-center">{icon}</div>
